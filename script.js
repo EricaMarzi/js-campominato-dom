@@ -6,11 +6,11 @@
 - La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
 - Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 
-####  MILESTONE 1
+####  MILESTONE 1 ✔
 - Prepariamo "qualcosa" per tenere il punteggio dell'utente.
 - Quando l'utente clicca su una cella, incrementiamo il punteggio.
 - Se riusciamo, facciamo anche in modo da non poter più cliccare la stessa cella.
-#### MILESTONE 2
+#### MILESTONE 2 ✔
 - Facciamo in modo di generare 16 numeri casuali (tutti diversi) compresi tra 1 e il massimo di caselle disponibili.
 - Generiamoli e stampiamo in console per essere certi che siano corretti
 #### MILESTONE 3
@@ -50,6 +50,7 @@ const totalBombs = 16; //da cambiare in seguito per la select
 let score = 0;
 const maxScore = totalCells - totalBombs;
 
+//? FUNZIONI-----------------------------------------
 // Funzione creazione celle
 const createNewCell = (num) => {
     const newCell = document.createElement("div");
@@ -68,11 +69,12 @@ const createBombs = (bombNumber, maxBombs) => {
             bombs.push(randomNumber);
         }
     }
-    console.log(bombs)
-    return bombs
+    console.log(bombs);
+    return bombs;
 }
+//? ----------------------------------------------------
 
-//Inizio della partita al click
+//! Inizio della partita al click
 form.addEventListener ("submit", function(event) {
     event.preventDefault();
     grid.innerHTML = "";
@@ -83,7 +85,12 @@ form.addEventListener ("submit", function(event) {
         const cell = createNewCell(i);
         
         cell.addEventListener ("click", () => {
-            cell.classList.toggle("bg-cell");
+            if (cell.classList.contains("bg-cell")) return;
+            cell.classList.add("bg-cell");
+            console.log("Cella cliccata: ", i);
+
+            // Incremento punteggio
+            console.log("Punteggio: ", ++score);
         })
         
         
