@@ -31,37 +31,49 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 Quando l'utente clicca una bomba, scopriamo tutte le caselle del tabellone, colorando di rosso tutte le bombe
 */
 
+// Recupero elementi
+let grid = document.getElementById("grid");
+const form = document.querySelector("form");
+const button = document.getElementById("btn-play");
+const levelSelect = document.getElementById("level");
+//TODO: crea e recupera un elemento per segnare il punteggio in pagina
 
-let grid = document.getElementById("grid")
-const form = document.querySelector("form")
 
-
-
-const rows = 10 //da cambiare in seguito per la select
-const cols = 10 //da cambiare in seguito per la select
+// Variabili celle, bombe, punti
+const rows = 10; //da cambiare in seguito per la select
+const cols = 10; //da cambiare in seguito per la select
 const totalCells = rows * cols;
+//TODO: switch case per i numeri di celle 
+//TODO: settare il css per la gradezza celle
+const totalBombs = 16; //da cambiare in seguito per la select
+//TODO opzionale: cambiare numero delle bombe a seconda del livello
+let score = 0;
+const maxScore = totalCells - totalBombs;
 
+// Funzione creazione celle
 const createNewCell = (num) => {
-    const newCell = document.createElement("div")
-    newCell.classList.add("cell")
-    newCell.innerText = num
-    return newCell
+    const newCell = document.createElement("div");
+    newCell.classList.add("cell");
+    newCell.innerText = num;
+    return newCell;
 }
 
+//TODO: funzione creazione bombe
 
+//Inizio della partita al click
 form.addEventListener ("submit", function(event) {
-    event.preventDefault()
-    grid.innerHTML = ""
+    event.preventDefault();
+    grid.innerHTML = "";
  
     for(let i = 1; i <= totalCells; i++ ) {
-        const cell = createNewCell(i)
+        const cell = createNewCell(i);
         
         cell.addEventListener ("click", () => {
-            cell.classList.toggle("bg-cell")
+            cell.classList.toggle("bg-cell");
         })
             
             
-        grid.appendChild(cell)
+        grid.appendChild(cell);
     }
 })
 
