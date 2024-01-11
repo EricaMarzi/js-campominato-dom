@@ -82,6 +82,18 @@ const reset = () => {
 
 }
 
+// Funzione rivela bombe 
+const revealBomb = (bombs) => {
+    const cells = document.querySelectorAll(".cell");
+    
+    for (let cell of cells) {
+        cell.classList.add("bg-cell");
+        if(bombs.includes(parseInt(cell.innerText))) {
+            cell.classList.add("bombs");
+        }
+    }
+} 
+
 //? ----------------------------------------------------
 
 //! Inizio della partita al click
@@ -108,6 +120,9 @@ form.addEventListener ("submit", function(event) {
                 //game over
                 message.innerHTML = `Hai perso! Il tuo punteggio è ${score}`;
                 cell.classList.add("bombs");
+
+                //TODO: funzione per rivelare bombe
+                revealBomb(bombs);
             } else {
                 // Incremento punteggio
                 displayScore.innerText = ++score; 
