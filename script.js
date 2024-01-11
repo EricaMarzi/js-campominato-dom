@@ -13,7 +13,7 @@
 #### MILESTONE 2 ✔
 - Facciamo in modo di generare 16 numeri casuali (tutti diversi) compresi tra 1 e il massimo di caselle disponibili.
 - Generiamoli e stampiamo in console per essere certi che siano corretti
-#### MILESTONE 3
+#### MILESTONE 3 ✔
 Quando l'utente clicca su una cella, verifichiamo se ha calpestato una bomba, controllando se il numero di cella è presente nell'array di bombe. Se si, la cella diventa rossa (raccogliamo il punteggio e scriviamo in console che la partita termina) altrimenti diventa azzurra e dobbiamo incrementare il punteggio.
 #### MILESTONE 4
 - Quando l'utente clicca su una cella, e questa non è una bomba, dobbiamo controllare se il punteggio incrementato ha raggiunto il punteggio massimo perchè in quel caso la partita termina. - - - Raccogliamo quindi il messaggio è scriviamo un messaggio appropriato.
@@ -36,6 +36,7 @@ let grid = document.getElementById("grid");
 const form = document.querySelector("form");
 const button = document.getElementById("btn-play");
 const levelSelect = document.getElementById("level");
+let message = document.querySelector(".message")
 //TODO: crea e recupera un elemento per segnare il punteggio in pagina
 
 
@@ -69,9 +70,9 @@ const createBombs = (bombNumber, maxBombs) => {
             bombs.push(randomNumber);
         }
     }
-    console.log(bombs);
     return bombs;
 }
+
 //? ----------------------------------------------------
 
 //! Inizio della partita al click
@@ -80,6 +81,7 @@ form.addEventListener ("submit", function(event) {
     grid.innerHTML = "";
     //Spawn delle bombe
     const bombs = createBombs(totalCells, totalBombs);
+    console.log(bombs);
     
     for(let i = 1; i <= totalCells; i++ ) {
         const cell = createNewCell(i);
@@ -89,8 +91,24 @@ form.addEventListener ("submit", function(event) {
             cell.classList.add("bg-cell");
             console.log("Cella cliccata: ", i);
 
-            // Incremento punteggio
-            console.log("Punteggio: ", ++score);
+            //Controllo bomba
+            const hasHit = bombs.includes(i);
+            console.log(hasHit);
+
+            if (hasHit) {
+                //game over
+                message.innerHTML = `Hai perso! Il tuo punteggio è ${score}`;
+                cell.classList.add("bombs");
+            } else {
+                // Incremento punteggio
+                console.log("Punteggio: ", ++score);
+
+                //win
+                if (score === maxScore) {
+                    message.innerText = "Hai vinto!";
+                }
+            }
+
         })
         
         

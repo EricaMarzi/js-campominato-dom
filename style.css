@@ -62,6 +62,9 @@ main {
     background-color: darkslategray;
 }
 
+.bombs {
+    background-color: red;
+}
 
 
 /*? FOOTER */
