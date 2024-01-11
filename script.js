@@ -15,7 +15,7 @@
 - Generiamoli e stampiamo in console per essere certi che siano corretti
 #### MILESTONE 3 ✔
 Quando l'utente clicca su una cella, verifichiamo se ha calpestato una bomba, controllando se il numero di cella è presente nell'array di bombe. Se si, la cella diventa rossa (raccogliamo il punteggio e scriviamo in console che la partita termina) altrimenti diventa azzurra e dobbiamo incrementare il punteggio.
-#### MILESTONE 4
+#### MILESTONE 4 ✔
 - Quando l'utente clicca su una cella, e questa non è una bomba, dobbiamo controllare se il punteggio incrementato ha raggiunto il punteggio massimo perchè in quel caso la partita termina. - - - Raccogliamo quindi il messaggio è scriviamo un messaggio appropriato.
 (Ma come stabiliamo quale sia il punteggio massimo?)
 #### MILESTONE 5
