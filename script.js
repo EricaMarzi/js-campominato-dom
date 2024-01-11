@@ -58,21 +58,35 @@ const createNewCell = (num) => {
     return newCell;
 }
 
-//TODO: funzione creazione bombe
+// Funzione creazione bombe
+const createBombs = (bombNumber, maxBombs) => {
+    const bombs = [];
+    while(bombs.length < maxBombs) {
+        //randomizzatore
+        const randomNumber = Math.floor(Math.random() * bombNumber) +1;
+        if (!bombs.includes(randomNumber)) {
+            bombs.push(randomNumber);
+        }
+    }
+    console.log(bombs)
+    return bombs
+}
 
 //Inizio della partita al click
 form.addEventListener ("submit", function(event) {
     event.preventDefault();
     grid.innerHTML = "";
- 
+    //Spawn delle bombe
+    const bombs = createBombs(totalCells, totalBombs);
+    
     for(let i = 1; i <= totalCells; i++ ) {
         const cell = createNewCell(i);
         
         cell.addEventListener ("click", () => {
             cell.classList.toggle("bg-cell");
         })
-            
-            
+        
+        
         grid.appendChild(cell);
     }
 })
