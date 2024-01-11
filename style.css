@@ -28,6 +28,12 @@ header {
     gap: 0.5rem;
 }
 
+#score {
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
 /*? MAIN */
 
 main {

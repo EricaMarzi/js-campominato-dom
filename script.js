@@ -37,7 +37,7 @@ const form = document.querySelector("form");
 const button = document.getElementById("btn-play");
 const levelSelect = document.getElementById("level");
 let message = document.querySelector(".message")
-//TODO: crea e recupera un elemento per segnare il punteggio in pagina
+let displayScore = document.getElementById("score")
 
 
 // Variabili celle, bombe, punti
@@ -73,12 +73,21 @@ const createBombs = (bombNumber, maxBombs) => {
     return bombs;
 }
 
+// Funzione reset
+const reset = () => {
+    grid.innerHTML = "";
+    score = 0;
+    message.innerText = "";
+    displayScore.innerText = 0; 
+
+}
+
 //? ----------------------------------------------------
 
 //! Inizio della partita al click
 form.addEventListener ("submit", function(event) {
     event.preventDefault();
-    grid.innerHTML = "";
+    reset()
     //Spawn delle bombe
     const bombs = createBombs(totalCells, totalBombs);
     console.log(bombs);
@@ -101,7 +110,7 @@ form.addEventListener ("submit", function(event) {
                 cell.classList.add("bombs");
             } else {
                 // Incremento punteggio
-                console.log("Punteggio: ", ++score);
+                displayScore.innerText = ++score; 
 
                 //win
                 if (score === maxScore) {
