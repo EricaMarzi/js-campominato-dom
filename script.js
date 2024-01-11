@@ -18,7 +18,7 @@ Quando l'utente clicca su una cella, verifichiamo se ha calpestato una bomba, co
 #### MILESTONE 4 ✔
 - Quando l'utente clicca su una cella, e questa non è una bomba, dobbiamo controllare se il punteggio incrementato ha raggiunto il punteggio massimo perchè in quel caso la partita termina. - - - Raccogliamo quindi il messaggio è scriviamo un messaggio appropriato.
 (Ma come stabiliamo quale sia il punteggio massimo?)
-#### MILESTONE 5
+#### MILESTONE 5 ✔
 Quando la partita termina dobbiamo capire se è terminata perchè è stata cliccata una bomba o se perchè l'utente ha raggiunto il punteggio massimo. Dobbiamo poi stampare in pagina il punteggio raggiunto ed il messaggio adeguato in caso di vittoria o sconfitta.
 
 #### BONUS
